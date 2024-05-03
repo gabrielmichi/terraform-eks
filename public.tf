@@ -28,3 +28,13 @@ resource "aws_subnet" "clustereks-subnet-1b" {
 
 # input entrada - terraform plan -var 'cidr_block=10.0.0.0/16'
 # terrafom plan -var-file terraform.tfvars
+
+resource "aws_route_table_association" "eks_rtb_assoc_1a" {
+  subnet_id      = aws_subnet.clustereks-subnet-1a.id
+  route_table_id = aws_route_table.eks_public_route_table.id
+}
+
+resource "aws_route_table_association" "eks_rtb_assoc_1b" {
+  subnet_id      = aws_subnet.clustereks-subnet-1b.id
+  route_table_id = aws_route_table.eks_public_route_table.id
+}
